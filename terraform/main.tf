@@ -8,8 +8,9 @@ terraform {
 }
 
 provider "docker" {
-  # Sur Windows avec Docker Desktop, on utilise le pipe nommé
-  host = "npipe:////./pipe/docker_engine"
+  # L'hôte est commenté pour utiliser la valeur par défaut du système
+  # (npipe sur Windows si configuré par défaut, ou unix socket sur Linux pour CI/CD)
+  # host = "npipe:////./pipe/docker_engine"
 }
 
 # ─── IMAGES ────────────────────────────────────────────────────────────────────
