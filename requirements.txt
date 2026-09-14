@@ -1,0 +1,15 @@
+pyiceberg
+duckdb
+feast
+redis
+fastapi
+xgboost
+pandas
+scikit-learn
+boto3
+uvicorn
+psycopg2-binary
+pytest
+httpx
+streamlit
+plotly

@@ -1,0 +1,56 @@
+
+’
+t
+
+turbine_idAIdentifiant numÃ©rique unique de chaque turbine Ã©olienne du parc"
+Turbine_IDJwind_turbine_features
+¡ôÕÈ•»¡ôÕÈ•»
+J
+,
+__dummy"
+__dummy_idJwind_turbine_features
+¡ôÕ€çş¡ôÕÈ•»1"$a928faec-8295-40ae-ba0b-c0e3a0f1413b*ÍôÕ€µ‡Ó2ä
+°
+turbine_featureswind_turbine_features
+turbine_id">
+Rotor_Speed_RPM")Vitesse de rotation des pales (tours/min)"D
+Wind_Speed_mps"0Vitesse du vent captÃ©e par l'anÃ©momÃ¨tre (m/s)"G
+Power_Output_kW"2Puissance Ã©lectrique instantanÃ©e gÃ©nÃ©rÃ©e (kW)"G
+Gearbox_Oil_Temp_C"/TempÃ©rature de l'huile du multiplicateur (Â°C)"S
+Generator_Bearing_Temp_C"5TempÃ©rature des roulements de la gÃ©nÃ©ratrice (Â°C)"M
+Vibration_Level_mmps"3Niveau de vibration mÃ©canique de la nacelle (mm/s)"C
+Ambient_Temp_C"/TempÃ©rature extÃ©rieure de l'air ambiant (Â°C)"@
+Humidity_pct".Taux d'humiditÃ© relative de l'air ambiant (%)"d
+Thermal_Imbalance"MÃ‰cart de tempÃ©rature huile multiplicateur vs roulements gÃ©nÃ©ratrice (Â°C)"Z
+Power_Efficiency"DEfficacitÃ© Ã©nergÃ©tique : puissance produite / vitesse de rotation"Z
+Thermal_Stress"FStress thermique : tempÃ©rature d'huile vs tempÃ©rature ambiante (Â°C)"Y
+Vibration_per_RPM"BIntensitÃ© vibratoire ramenÃ©e Ã  chaque tour mÃ©canique effectuÃ©"L
+Heat_Humidity_Index"3Indice hygromÃ©trique combinÃ© chaleur et humiditÃ©2€Î‰:€	timestamp*created_timestampZdata/turbine_features.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢turbine_telemetry_sourceºPFichier Parquet contenant les mesures de capteurs et les 5 indicateurs calculÃ©s’¡ôÕØ„Ì"¡ôÕØÚÁ@RJEnsemble complet des 13 variables de surveillance prÃ©dictive des turbinesb
+
+Turbine_ID’latest/
+¡ôÕØÚÁÍôÕ€µ‡Ó
+€È¬€òÖÊ0b˜	timestamp*created_timestampZdata/turbine_features.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢turbine_telemetry_sourceªwind_turbine_featuresºPFichier Parquet contenant les mesures de capteurs et les 5 indicateurs calculÃ©s’¡ôÕØ„Ì"¡ôÕØÚÁŠ5
+
+wind_turbine_features
+¡ôÕĞš‹	¡ôÕĞš‹	’¿
+¼
+turbine_featureswind_turbine_features"feature_view*Ï
+°
+turbine_featureswind_turbine_features
+turbine_id">
+Rotor_Speed_RPM")Vitesse de rotation des pales (tours/min)"D
+Wind_Speed_mps"0Vitesse du vent captÃ©e par l'anÃ©momÃ¨tre (m/s)"G
+Power_Output_kW"2Puissance Ã©lectrique instantanÃ©e gÃ©nÃ©rÃ©e (kW)"G
+Gearbox_Oil_Temp_C"/TempÃ©rature de l'huile du multiplicateur (Â°C)"S
+Generator_Bearing_Temp_C"5TempÃ©rature des roulements de la gÃ©nÃ©ratrice (Â°C)"M
+Vibration_Level_mmps"3Niveau de vibration mÃ©canique de la nacelle (mm/s)"C
+Ambient_Temp_C"/TempÃ©rature extÃ©rieure de l'air ambiant (Â°C)"@
+Humidity_pct".Taux d'humiditÃ© relative de l'air ambiant (%)"d
+Thermal_Imbalance"MÃ‰cart de tempÃ©rature huile multiplicateur vs roulements gÃ©nÃ©ratrice (Â°C)"Z
+Power_Efficiency"DEfficacitÃ© Ã©nergÃ©tique : puissance produite / vitesse de rotation"Z
+Thermal_Stress"FStress thermique : tempÃ©rature d'huile vs tempÃ©rature ambiante (Â°C)"Y
+Vibration_per_RPM"BIntensitÃ© vibratoire ramenÃ©e Ã  chaque tour mÃ©canique effectuÃ©"L
+Heat_Humidity_Index"3Indice hygromÃ©trique combinÃ© chaleur et humiditÃ©2€Î‰:€	timestamp*created_timestampZdata/turbine_features.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢turbine_telemetry_sourceºPFichier Parquet contenant les mesures de capteurs et les 5 indicateurs calculÃ©s’¡ôÕØ„Ì"¡ôÕØÚÁ@RJEnsemble complet des 13 variables de surveillance prÃ©dictive des turbinesb
+
+Turbine_ID’latest
+¡ôÕØÚÁ¡ôÕØÚÁ2¡ôÕ€çşB$3fdaa5cb-312c-4d17-ab4d-b3132a6693e5

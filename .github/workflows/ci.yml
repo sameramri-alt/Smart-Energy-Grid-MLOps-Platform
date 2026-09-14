@@ -1,0 +1,111 @@
+# ==============================================================================
+# PROJET SMART ENERGY GRID - PHASE 6 : PIPELINE D'INTÉGRATION CONTINUE (CI/CD)
+# Fichier : .github/workflows/ci.yml
+# Description :
+#   Ce workflow GitHub Actions automatise les contrôles de qualité, de syntaxe,
+#   d'infrastructure (IaC) et de tests unitaires à chaque modification du code.
+#
+#   Déclencheurs :
+#     - 'push' : À chaque envoi de code sur le dépôt distant (toutes les branches).
+#     - 'pull_request' : À chaque proposition de fusion de code vers la branche principale.
+#
+#   Étapes du pipeline :
+#     1. Checkout du code source.
+#     2. Installation de Python 3.10 avec mise en cache des dépendances.
+#     3. Installation de toutes les bibliothèques du projet (requirements.txt).
+#     4. Installation et validation de l'infrastructure Terraform (syntaxe & format).
+#     5. Validation des définitions du Feature Store Feast (entité et schéma des features).
+#     6. Exécution des 19 tests unitaires avec Pytest (décision probabiliste, formules physiques, modèle, API).
+# ==============================================================================
+
+# Nom du workflow affiché dans l'onglet 'Actions' de GitHub
+name: Smart Energy Grid CI Pipeline
+
+# ------------------------------------------------------------------------------
+# 1. DÉCLENCHEURS (EVENTS)
+# ------------------------------------------------------------------------------
+on:
+  # Se déclenche dès qu'un développeur fait un 'git push'
+  push:
+    branches: [ "**" ]
+  # Se déclenche dès qu'une Pull Request est ouverte ou mise à jour
+  pull_request:
+    branches: [ "**" ]
+
+# Définition des permissions par défaut pour sécuriser l'exécution
+permissions:
+  contents: read
+
+# ------------------------------------------------------------------------------
+# 2. TRAVAUX (JOBS)
+# ------------------------------------------------------------------------------
+jobs:
+  validate-and-test:
+    name: Validation & Tests Unitaires
+    # Exécution sur la dernière version stable d'Ubuntu Linux dans le cloud GitHub
+    runs-on: ubuntu-latest
+
+    steps:
+      # ------------------------------------------------------------------------
+      # ÉTAPE 1 : Récupération du code source
+      # ------------------------------------------------------------------------
+      - name: 📥 Cloner le dépôt de code (Checkout)
+        uses: actions/checkout@v4
+        with:
+          # Récupère l'historique complet pour garantir l'intégrité
+          fetch-depth: 1
+
+      # ------------------------------------------------------------------------
+      # ÉTAPE 2 : Configuration de l'environnement Python
+      # ------------------------------------------------------------------------
+      - name: 🐍 Configurer l'environnement Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          # Mise en cache automatique du dossier pip pour accélérer les runs suivants
+          cache: "pip"
+
+      # ------------------------------------------------------------------------
+      # ÉTAPE 3 : Installation des dépendances Python du projet
+      # ------------------------------------------------------------------------
+      - name: 📦 Installer les dépendances du projet
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ------------------------------------------------------------------------
+      # ÉTAPE 4 : Installation et vérification de Terraform (IaC)
+      # ------------------------------------------------------------------------
+      - name: 🏗️ Installer l'outil Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.6.0"
+
+      - name: 🔍 Vérifier le formatage du code Terraform (terraform fmt)
+        run: |
+          cd terraform
+          terraform fmt -check
+
+      - name: ⚙️ Initialiser Terraform sans backend distant (terraform init)
+        run: |
+          cd terraform
+          terraform init -backend=false
+
+      - name: ✅ Valider la cohérence de la configuration Terraform (terraform validate)
+        run: |
+          cd terraform
+          terraform validate
+
+      # ------------------------------------------------------------------------
+      # ÉTAPE 5 : Validation des définitions du Feature Store Feast
+      # ------------------------------------------------------------------------
+      - name: 📊 Valider la configuration du Feature Store Feast
+        run: |
+          python -c "from feature_repository.definitions import turbine_entity, turbine_features_view; print(f'Feast OK: {turbine_entity.name} avec {len(turbine_features_view.schema)} features')"
+
+      # ------------------------------------------------------------------------
+      # ÉTAPE 6 : Exécution de la suite complète de 19 tests unitaires Pytest
+      # ------------------------------------------------------------------------
+      - name: 🧪 Exécuter les tests unitaires automatisés (Pytest)
+        run: |
+          pytest tests/ -v --durations=10

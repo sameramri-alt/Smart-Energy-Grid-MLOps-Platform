@@ -1,0 +1,30 @@
+# ==============================================================================
+# PROJET SMART ENERGY GRID - PHASE 4 : CONFIGURATION DU FEATURE STORE FEAST
+# Fichier : feature_repository/feature_store.yaml
+# Description :
+#   Ce fichier configure l'environnement Feast :
+#   1. project : Nom unique du projet de Feature Store.
+#   2. registry : Fichier de base de données où Feast enregistre toutes ses métadonnées.
+#   3. provider : Fournisseur d'infrastructure ('local' pour notre environnement autonome).
+#   4. online_store : Configuration du magasin temps réel adossé à Redis (port 6379).
+# ==============================================================================
+
+# Nom du projet Feast (sert d'espace de noms pour nos entités et features)
+project: wind_turbine_features
+
+# Emplacement du registre de métadonnées (Feast y stocke la liste des features et schémas)
+registry: data/registry.db
+
+# Fournisseur d'infrastructure (local permet d'exécuter Feast sur la machine hôte sans cloud)
+provider: local
+
+# Configuration de l'Online Store (Magasin Temps Réel ultra-faible latence)
+online_store:
+  # Type de magasin en ligne : Redis en mémoire vive
+  type: redis
+  
+  # Chaîne de connexion au conteneur Docker Redis (défini dans docker-compose.yml)
+  connection_string: localhost:6379
+
+  # Clé de préfixe pour isoler les données du projet dans Redis (optionnel mais propre)
+  key_ttl_seconds: 2592000  # Durée de rétention des clés : 30 jours (30 * 24 * 3600)

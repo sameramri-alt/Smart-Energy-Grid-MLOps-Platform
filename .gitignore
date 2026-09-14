@@ -1,0 +1,32 @@
+# ==============================================================================
+# PROJET SMART ENERGY GRID - FICHIER .gitignore
+# Ignore les dossiers temporaires, caches et environnements virtuels
+# ==============================================================================
+
+# Environnements virtuels Python
+venv/
+.venv/
+env/
+
+# Caches Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cache Pytest
+.pytest_cache/
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform.lock.hcl
+
+# Streamlit
+.streamlit/
+
+# Données volumineuses et temporaires (optionnel selon le besoin)
+# data/
+
+# Documentation personnelle et confidentielle (non publiée sur GitHub)
+GUIDE_PEDAGOGIQUE_PROJET.md
