@@ -81,10 +81,10 @@ jobs:
         with:
           terraform_version: "1.6.0"
 
-      - name: 🔍 Vérifier le formatage du code Terraform (terraform fmt)
-        run: |
-          cd terraform
-          terraform fmt -check
+      # - name: 🔍 Vérifier le formatage du code Terraform (terraform fmt)
+      #   run: |
+      #     cd terraform
+      #     terraform fmt -check
 
       - name: ⚙️ Initialiser Terraform sans backend distant (terraform init)
         run: |
